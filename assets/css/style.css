@@ -1,0 +1,30 @@
+
+
+body {
+    font-style: italic;
+    font-size: medium;
+    color: blue;
+    background-color: red;
+}
+
+section{
+    
+    background-color: green
+}
+
+.hide {
+    display: none;
+}
+
+.show {
+    display: block;
+}
+
+h1 {
+    text-align: center;
+    font-size:large;
+    
+}
+
+.option {
+    display: block;

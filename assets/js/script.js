@@ -6,10 +6,14 @@ var randomtimerId;
 
 var timerelatedEl = document.querySelector("#time-related");
 var startic = document.querySelector("#starticon");
-var quiztitlescreen = document.querySelector("quiz-title");
+var quiztitlescreen = document.querySelector("#quiz-title");
 var quizdisplay = document.querySelector("#quiz-questions");
-var remarkEl = document.querySelector("remark");
-var optionsEl = document.querySelector("options");
+var remarkEl = document.querySelector("#remark");
+var optionsEl = document.querySelector("#options");
+var userinitialsEl = document.querySelector("#userinitials");
+var submitbutton = document.querySelector("#button-submit");
+
+
 
 
 function beginQuiz() {
@@ -28,15 +32,14 @@ function beginQuiz() {
 function startticking() {
 
 randomtime--;
+timerelatedEl.textContent = randomtime;
 
-timerelatedEl.textcontent = randomtime;
-
-if (randomtime <=0) {
+    if (randomtime <=0) {
       endquiz();
     }
   }
 
-  function displayquestion() {
+  function displayQuestion() {
     var presentquestion = codingquestions[indexofcurrentquestion];
 
     var headingEl = document.getElementById("heading-title");
@@ -46,15 +49,15 @@ if (randomtime <=0) {
 
     presentquestion.options.forEach(function(option, i) {
 
-      var optionnode = document.createElement("button");
-      optionnode.setAttribute("class", option);
-      optionnode.setAttribute("value", option);
+      var optionNode = document.createElement("button");
+      optionNode.setAttribute("class", option);
+      optionNode.setAttribute("value", option);
 
-      optionnode.textContent = i + 1 + "." + option;
+      optionNode.textContent = i + 1 + "." + option;
 
-      optionnode.onclick = optionclick;
+      optionNode.onclick = optionclick;
 
-      optionsEl.appendChild(optionnode);
+      optionsEl.appendChild(optionNode);
       });
     }
 
@@ -62,7 +65,7 @@ if (randomtime <=0) {
 
       if (this.value !== codingquestions[indexofcurrentquestion].answer) {
 
-        randomtime -=15;
+        randomtime -= 15;
 
         if (randomtime < 0) {
           randomtime = 0;
@@ -83,13 +86,51 @@ if (randomtime <=0) {
 
       indexofcurrentquestion++;
 
-      if (indexofcurrentquestion === codingquestionslength) {
+      if (indexofcurrentquestion === codingquestions.length) {
           endquiz();
       } else {
-        displayquestion();
+        displayQuestion();
       }
     }
       
+
+    function endquiz() {
+
+      clearInterval(randomtimerId);
+
+      var highscoredisplayEl = document.querySelector("#highscore-area");
+      highscoredisplayEl.setAttribute("class", "show");
+
+      var finalscoredisplayEl = document.querySelector("#finalscore-display");
+      finalscoredisplayEl.textContent = randomtime;
+
+      quizdisplay.setAttribute("class", "hide");
+      }
+
+      function highscoresave() {
+
+        var userinitials = userinitialsEl.value.trim();
+
+        if (userinitials !== "") {
+
+            var userhighscores =
+            JSON.parse(window.localStorage.getItem("userhighscores")) || [];
+
+            var userscore = {
+              quizscore : randomtime,
+              userinitials : userinitials
+            };
+
+            userhighscores.push(userscore);
+            window.localStorage.setItem("userhighscores", JSON.stringify(userhighscores));
+        }
+      }
+
+      submitbutton.onclick = highscoresave;
+
+      startic.onclick = beginQuiz;
+
+
 
       
       

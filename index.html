@@ -6,7 +6,7 @@
         <title>Code-Quiz</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
+        <link rel="stylesheet" href="./assets/css/style.css">
     </head>
     
     
@@ -24,7 +24,7 @@
           
       
       <!--Coding Quiz Title-->
-      <secton id="quiz-title" class ="quiz">
+      <secton id="quiz-title" class="show">
             <div class="one">
                 <div class="random-1">
                     <h1>Coding-Quiz</h1>                    
@@ -43,7 +43,7 @@
         </section>
 
         <!--Coding-Quiz questions-->
-        <section id="quiz-questions" class="present">
+        <section id="quiz-questions" class="hide">
             <div class="one">
                 <div class="random-1 headings">
                     <h3 id="heading-title"></h3>
@@ -51,15 +51,26 @@
             </div>
             <div class="one">
                 <div class="random-1" id="options"></div>
-                <div id="remark" class="remark hidden"></div>
+                <div id="remark" class="remark hide"></div>
             </div>
         </section>
 
-        <!---->
+        <!--Area for High Scores-->
+        <section id="highscore-area" class="hide">
+            <div class="one">
+                <div id="highscore-display" class="random-1">
+                    <h2>Quiz Over!</h2>
+                    <h3>Your score is <span id="finalscore-display">0</span></h3>
+                    <label for="initialsinput">Enter your initials:</label>
+                    <input type="text" name="initialsinput" maxlength="2" id="userinitials">
+                    <button id="button-submit" type="submit">Submit</button>
+                </div>
+            </div>
+        </section>
 
 
-        
-        <script src="./assets/js/script.js"></script>
         <script src="./assets/js/coding-questions.js"></script>
+        <script src="./assets/js/script.js"></script>
+        
     </body>
 </html>
