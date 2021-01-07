@@ -3,7 +3,7 @@
 body {
     font-style: italic;
     font-size: medium;
-    color: blue;
+    color: black;
     background-color: red;
 }
 
@@ -12,11 +12,13 @@ section{
     background-color: green
 }
 
-.hide {
+
+.disappear {
     display: none;
 }
 
-.show {
+
+.appear {
     display: block;
 }
 
@@ -28,3 +30,4 @@ h1 {
 
 .option {
     display: block;
+}

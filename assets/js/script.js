@@ -18,9 +18,9 @@ var submitbutton = document.querySelector("#button-submit");
 
 function beginQuiz() {
 
-  quiztitlescreen.setAttribute("class", "hide");
+  quiztitlescreen.setAttribute("class", "disappear");
 
-  quizdisplay.setAttribute("class", "show");
+  quizdisplay.setAttribute("class", "appear");
 
   randomtimerId = setInterval(startticking, 1000);
 
@@ -50,7 +50,7 @@ timerelatedEl.textContent = randomtime;
     presentquestion.options.forEach(function(option, i) {
 
       var optionNode = document.createElement("button");
-      optionNode.setAttribute("class", option);
+      optionNode.setAttribute("class", "option");
       optionNode.setAttribute("value", option);
 
       optionNode.textContent = i + 1 + "." + option;
@@ -81,7 +81,7 @@ timerelatedEl.textContent = randomtime;
 
       remarkEl.setAttribute("class", "remark");
       setTimeout(function() {
-        remarkEl.setAttribute("class", "remark hide");
+        remarkEl.setAttribute("class", "remark disappear");
       }, 1000);
 
       indexofcurrentquestion++;
@@ -99,12 +99,12 @@ timerelatedEl.textContent = randomtime;
       clearInterval(randomtimerId);
 
       var highscoredisplayEl = document.querySelector("#highscore-area");
-      highscoredisplayEl.setAttribute("class", "show");
+      highscoredisplayEl.setAttribute("class", "appear");
 
       var finalscoredisplayEl = document.querySelector("#finalscore-display");
       finalscoredisplayEl.textContent = randomtime;
 
-      quizdisplay.setAttribute("class", "hide");
+      quizdisplay.setAttribute("class", "disappear");
       }
 
       function highscoresave() {
