@@ -13,14 +13,14 @@ section{
 }
 
 
+.appear {
+    display: block;
+}
+
 .disappear {
     display: none;
 }
 
-
-.appear {
-    display: block;
-}
 
 h1 {
     text-align: center;

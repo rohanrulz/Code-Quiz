@@ -1,22 +1,17 @@
 //variables
+var quizdisplay = document.querySelector("#quiz-questions");
+var timerelatedEl = document.querySelector("#time-related");
+var startic = document.querySelector("#starticon");
+var submitbutton = document.querySelector("#button-submit");
 
 var indexofcurrentquestion = 0;
 var randomtime = codingquestions.length * 15;
 var randomtimerId;
 
-var timerelatedEl = document.querySelector("#time-related");
-var startic = document.querySelector("#starticon");
-var quiztitlescreen = document.querySelector("#quiz-title");
-var quizdisplay = document.querySelector("#quiz-questions");
-var remarkEl = document.querySelector("#remark");
-var optionsEl = document.querySelector("#options");
-var userinitialsEl = document.querySelector("#userinitials");
-var submitbutton = document.querySelector("#button-submit");
-
-
-
 
 function beginQuiz() {
+
+  var quiztitlescreen = document.querySelector("#quiz-title");
 
   quiztitlescreen.setAttribute("class", "disappear");
 
@@ -40,6 +35,9 @@ timerelatedEl.textContent = randomtime;
   }
 
   function displayQuestion() {
+
+    var optionsEl = document.querySelector("#options");
+
     var presentquestion = codingquestions[indexofcurrentquestion];
 
     var headingEl = document.getElementById("heading-title");
@@ -63,6 +61,8 @@ timerelatedEl.textContent = randomtime;
 
     function optionclick() {
 
+      var remarkEl = document.querySelector("#remark");
+
       if (this.value !== codingquestions[indexofcurrentquestion].answer) {
 
         randomtime -= 15;
@@ -81,7 +81,7 @@ timerelatedEl.textContent = randomtime;
 
       remarkEl.setAttribute("class", "remark");
       setTimeout(function() {
-        remarkEl.setAttribute("class", "remark disappear");
+        remarkEl.setAttribute("class", "disappear");
       }, 1000);
 
       indexofcurrentquestion++;
@@ -98,8 +98,8 @@ timerelatedEl.textContent = randomtime;
 
       clearInterval(randomtimerId);
 
-      var highscoredisplayEl = document.querySelector("#highscore-area");
-      highscoredisplayEl.setAttribute("class", "appear");
+      var quizscoredisplayEl = document.querySelector("#quizscorearea");
+      quizscoredisplayEl.setAttribute("class", "appear");
 
       var finalscoredisplayEl = document.querySelector("#finalscore-display");
       finalscoredisplayEl.textContent = randomtime;
@@ -107,26 +107,30 @@ timerelatedEl.textContent = randomtime;
       quizdisplay.setAttribute("class", "disappear");
       }
 
-      function highscoresave() {
+      function quizscoresave() {
+
+        var userinitialsEl = document.querySelector("#userinitials");
 
         var userinitials = userinitialsEl.value.trim();
 
         if (userinitials !== "") {
 
-            var userhighscores =
-            JSON.parse(window.localStorage.getItem("userhighscores")) || [];
+            var userscore =
+            JSON.parse(window.localStorage.getItem("userscore")) || [];
 
-            var userscore = {
+            var result = {
               quizscore : randomtime,
               userinitials : userinitials
             };
 
-            userhighscores.push(userscore);
-            window.localStorage.setItem("userhighscores", JSON.stringify(userhighscores));
+            userscore.push(result);
+            window.localStorage.setItem("userscore", JSON.stringify(userscore));
+
+            window.location.href = "highscoresarea.html";
         }
       }
 
-      submitbutton.onclick = highscoresave;
+      submitbutton.onclick = quizscoresave;
 
       startic.onclick = beginQuiz;
 

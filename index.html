@@ -12,62 +12,51 @@
     
     
     <body>
-      <!--Timer-->
-      <header class="one">
-          <div class="random-1" id="highscores-display">
-              <a fref="">View your highscores</a>
+      <!--Header containing Timer and the link to view the highscores-->
+      <header>
+          <div>
+              <a href="./highscoresarea.html">View your highscores</a>
           </div>
-          <div class="random-1" id="clock">
+          <div>
               Time: <span id="time-related">0</span>
           </div>
       </header>
           
       
       <!--Coding Quiz Title-->
-      <section id="quiz-title" class="appear">
-            <div class="one">
-                <div class="random-1">
-                    <h1>Coding-Quiz</h1>                    
-                </div>
+        <section id="quiz-title" class="appear">
+            <div>
+                <h1>Coding-Quiz</h1>                    
             </div>
-            <div class="one">
-                <div class="random-1">
-                    <p>Try and answer the following questions in the quiz. The quiz contains 5 Javascript related questions.</p>
-                </div>
-            </div>
-            <div class="one">
-                <div class="random-1">
-                    <button id="starticon">Start Quiz</button>
-                </div>
+            <div class="random-1">
+                <p>Try and answer the following questions in the quiz. The quiz contains 5 Javascript related questions.</p>
+            </div>      
+            <div >
+                <button id="starticon">Begin Quiz</button>
             </div>
         </section>
 
         <!--Coding-Quiz questions-->
         <section id="quiz-questions" class="disappear">
-            <div class="one">
-                <div class="random-1 headings">
-                    <h3 id="heading-title"></h3>
-                </div>
+            <div>
+                <h3 id="heading-title"></h3>
             </div>
-            <div class="one">
-                <div class="random-1" id="options"></div>
-                <div id="remark" class="remark disappear"></div>
+            <div>
+                <div id="options"></div>
+                <div id="remark" class="disappear"></div>
             </div>
         </section>
 
-        <!--Area for High Scores-->
-        <section id="highscore-area" class="disappear">
-            <div class="one">
-                <div id="highscore-display" class="random-1">
-                    <h2>Quiz Over!</h2>
-                    <h3>Your score is <span id="finalscore-display">0</span></h3>
-                    <label for="initialsinput">Enter your initials:</label>
-                    <input type="text" name="initialsinput" maxlength="2" id="userinitials">
-                    <button id="button-submit" type="submit">Submit</button>
-                </div>
+        <!--Area for seeing the quiz score-->
+        <section id="quizscorearea" class="disappear">
+            <div>
+                <h2>Quiz Over!</h2>
+                <h3>Your score is <span id="finalscore-display">0</span></h3>
+                <label for="initialsinput">Input your initials:</label>
+                <input type="text" name="initialsinput" maxlength="2" id="userinitials">
+                <button id="button-submit" type="submit">Submit</button>
             </div>
         </section>
-
 
         <script src="./assets/js/coding-questions.js"></script>
         <script src="./assets/js/script.js"></script>
